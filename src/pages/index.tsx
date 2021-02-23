@@ -1,5 +1,5 @@
-import React from 'react';
-import Link from 'next/link';
+import React from 'react'
+import Link from 'next/link'
 
 import Layout from '../components/Layout'
 import CardList from '../components/CardList'
@@ -16,7 +16,7 @@ type Props = {
     title: string,
     body: string,
     tags: any[]
-  }
+  },
 }
 
 type Tag = {
@@ -29,7 +29,6 @@ type Tag = {
 }
 
 const Home: React.FC<Props> = ({ blogs }: any) => {
-  console.log('indexのblogsは' + JSON.stringify(blogs))
   return (
     <Layout>
       <Quotes />
@@ -59,17 +58,17 @@ const Home: React.FC<Props> = ({ blogs }: any) => {
 export const getStaticProps = async () => {
   const key: any = {
     headers: { 'X-API-KEY': process.env.API_KEY },
-  };
+  }
   const res = await fetch(
     `https://knowledge-note.microcms.io/api/v1/blogs`,
     key,
-  );
-  console.log(res)
-  const data = await res.json();
+  )
+  const data = await res.json()
 
   return {
     props: {
       blogs: data.contents,
+      // body:$.html()
     }
   }
 };
