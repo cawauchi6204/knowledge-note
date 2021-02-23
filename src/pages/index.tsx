@@ -7,49 +7,40 @@ import Quotes from '../components/Quotes'
 import JointDevelopment from '../components/JointDevelopment'
 
 type Props = {
-  blogs: {
-    id: string,
-    createdAt: string,
-    updatedAt: string,
-    publishedAt: string,
-    revisedAt: string,
-    title: string,
-    body: string,
-    tags: any[]
-  },
+  blogs: [
+    {
+      id: string
+      createdAt: string
+      updatedAt: string
+      publishedAt: string
+      revisedAt: string
+      title: string
+      body: string
+      tags: string[]
+      eyecatching: {
+        url: string
+        height: number
+        width: number
+      }
+    }
+  ],
 }
 
 type Tag = {
-  id: string,
-  createdAt: string,
-  updatedAt: string,
-  publishedAt: string,
-  revisedAt: string,
+  id: string
+  createdAt: string
+  updatedAt: string
+  publishedAt: string
+  revisedAt: string
   name: string
 }
 
-const Home: React.FC<Props> = ({ blogs }: any) => {
+const Home: React.FC<Props> = ({ blogs }) => {
   return (
     <Layout>
       <Quotes />
       <h2>最新の記事</h2>
-      <div>
-        {blogs.map((blog: any) => (
-          <React.Fragment key={blog.id}>
-            <Link href="/blogs/[id]" as={`blogs/${blog.id}`}>
-              <a>
-                <h2>{blog.title}</h2>
-              </a>
-            </Link>
-            {blog.tags.map((tag: Tag) => (
-              <React.Fragment key={tag.id}>
-                <span>{tag.name}</span>
-              </React.Fragment>
-            ))}
-          </React.Fragment>
-        ))}
-      </div>
-      <CardList />
+      <CardList blogs={blogs} />
       <JointDevelopment />
     </Layout>
   );
@@ -68,7 +59,6 @@ export const getStaticProps = async () => {
   return {
     props: {
       blogs: data.contents,
-      // body:$.html()
     }
   }
 };

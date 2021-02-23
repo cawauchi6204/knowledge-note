@@ -3,7 +3,25 @@ import styled from 'styled-components'
 
 import Card from './Card'
 
-type Props = {}
+type Props = {
+  blogs: [
+    {
+      id: string
+      createdAt: string
+      updatedAt: string
+      publishedAt: string
+      revisedAt: string
+      title: string
+      body: string
+      tags: string[]
+      eyecatching: {
+        url: string
+        height: number
+        width: number
+      }
+    }
+  ],
+}
 
 const Grid = styled.article`
 margin: 30px 0 60px;
@@ -15,14 +33,16 @@ margin: 30px 0 60px;
     column-gap: 15px;
 `
 
-const CardList: React.FC<Props> = ({ }) => {
+const CardList: React.FC<Props> = ({ blogs }) => {
+  console.log('CardListの22行目のblogsは' + JSON.stringify(blogs))
+  console.log('CardListの38行目のblogs.eyecatchingは' + blogs[0].eyecatching)
   return (
     <Grid>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      {blogs.map((blog: any) => (
+        <React.Fragment key={blog.id}>
+          <Card description={blog} />
+        </React.Fragment>
+      ))}
     </Grid>
   )
 }

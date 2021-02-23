@@ -1,8 +1,19 @@
 import React from "react"
 import styled from 'styled-components'
 import Image from 'next/image'
+import Link from 'next/link'
 
-type Props = {}
+type Props = {
+  description: {
+    title: string
+    tag: string[]
+    updated: string
+    id: string
+    eyecatching: {
+      url:string
+    }
+  }
+}
 
 const Article = styled.article`
   border-radius:10px;
@@ -30,16 +41,24 @@ const Updated = styled.span`
 display:inline-block;
 `
 
-const Card: React.FC<Props> = ({ }) => {
+const Card: React.FC<Props> = ({ description }) => {
+  console.log('Cardの42行目のdescriptionは' + JSON.stringify(description.eyecatching))
   return (
-    <Article>
-      <Image width="auto" height="200px" src="https://placehold.jp/300x200.png" />
-      <Content>
-        <CardTitle>3時間でわかる</CardTitle>
-        <TagTitle>JavaScript</TagTitle>
-        <Updated>2017</Updated>
-      </Content>
-    </Article>
+    <Link href="/blogs/[id]" as={`blogs/${description.id}`}>
+      <Article>
+        {
+          description.eyecatching ?
+            <Image width="auto" height="200px" src={description.eyecatching.url} />
+            :
+            <Image width="auto" height="200px" src="https://placehold.jp/300x200.png" />
+        }
+        <Content>
+          <CardTitle>{description.title}</CardTitle>
+          <TagTitle>{description.tag}</TagTitle>
+          <Updated>{description.updated}</Updated>
+        </Content>
+      </Article>
+    </Link>
   )
 }
 
