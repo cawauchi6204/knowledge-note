@@ -11,7 +11,7 @@ type Props = {
 
 const Toc: React.FC<Props> = ({ item }) => {
   return (
-    <li>
+    <li key={item.id}>
       <Link
         activeClass="active"
         to={item.id}
@@ -23,6 +23,5 @@ const Toc: React.FC<Props> = ({ item }) => {
     </li>
   )
 }
-
 
 export default Toc
