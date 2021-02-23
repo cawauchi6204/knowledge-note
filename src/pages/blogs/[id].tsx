@@ -16,7 +16,7 @@ type Props = {
     tags: any[],
     body: any
   },
-  body: any
+  highlightedBody: string
 }
 
 type Tag = {
@@ -28,7 +28,7 @@ type Tag = {
   name: string
 }
 
-const BlogId: React.FC<Props> = ({ blog,body }) => {
+const BlogId: React.FC<Props> = ({ blog,highlightedBody }) => {
   return (
     <Layout>
       <h1>{blog.title}</h1>
@@ -39,7 +39,7 @@ const BlogId: React.FC<Props> = ({ blog,body }) => {
           </React.Fragment>
         ))}
       </div>
-      <div dangerouslySetInnerHTML={{ __html: body }}></div>
+      <div dangerouslySetInnerHTML={{ __html: highlightedBody }}></div>
     </Layout>
   )
 }
@@ -78,7 +78,7 @@ export const getStaticProps = async (context: any) => {
   return {
     props: {
       blog,
-      body:$.html()
+      highlightedBody:$.html()
     },
   }
 }
