@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
 
 import Layout from '../components/Layout'
 import CardList from '../components/CardList'
@@ -43,8 +42,8 @@ const Home: React.FC<Props> = ({ blogs }) => {
       <CardList blogs={blogs} />
       <JointDevelopment />
     </Layout>
-  );
-};
+  )
+}
 
 export const getStaticProps = async () => {
   const key: any = {
@@ -61,6 +60,6 @@ export const getStaticProps = async () => {
       blogs: data.contents,
     }
   }
-};
+}
 
 export default Home;

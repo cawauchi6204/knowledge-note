@@ -42,7 +42,7 @@ const Header: React.FC<Props> = ({ }) => {
     <LayoutHeader>
       <Circle>
         <Link href="/">
-          <WhiteLink><H1>プログラミングアカデミー</H1><br/><H2>ナレッジノート</H2></WhiteLink>
+          <WhiteLink><H1>プログラミングアカデミー</H1><br/><H2>学習帳</H2></WhiteLink>
         </Link>
       </Circle>
     </LayoutHeader>
