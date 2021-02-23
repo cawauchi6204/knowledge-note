@@ -4,6 +4,7 @@ import hljs from 'highlight.js'
 import 'highlight.js/styles/night-owl.css';
 
 import Layout from '../../components/Layout'
+import Toc from '../../components/Toc'
 
 type Props = {
   blog: {
@@ -28,7 +29,16 @@ type Tag = {
   name: string
 }
 
-const BlogId: React.FC<Props> = ({ blog,highlightedBody }) => {
+const BlogId: React.FC<Props> = ({ blog, highlightedBody }) => {
+  const $ = cheerio.load(highlightedBody)
+  console.log('[id]の34行目のhighlightedBodyは' + highlightedBody)
+  const headings = $('h1, h2, h3').toArray()
+  const toc = headings.map((data: any) => ({
+    text: data.children[0].data,
+    id: data.attribs.id,
+    name: data.name
+  }))
+  console.log('[id]の41行目のtocは' + JSON.stringify(toc))
   return (
     <Layout>
       <h1>{blog.title}</h1>
@@ -39,6 +49,11 @@ const BlogId: React.FC<Props> = ({ blog,highlightedBody }) => {
           </React.Fragment>
         ))}
       </div>
+      <ul>
+        {toc.map(item => (
+          <Toc item={item} />
+        ))}
+      </ul>
       <div dangerouslySetInnerHTML={{ __html: highlightedBody }}></div>
     </Layout>
   )
@@ -78,7 +93,7 @@ export const getStaticProps = async (context: any) => {
   return {
     props: {
       blog,
-      highlightedBody:$.html()
+      highlightedBody: $.html()
     },
   }
 }
