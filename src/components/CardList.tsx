@@ -34,8 +34,6 @@ margin: 30px 0 60px;
 `
 
 const CardList: React.FC<Props> = ({ blogs }) => {
-  console.log('CardListの22行目のblogsは' + JSON.stringify(blogs))
-  console.log('CardListの38行目のblogs.eyecatchingは' + blogs[0].eyecatching)
   return (
     <Grid>
       {blogs.map((blog: any) => (

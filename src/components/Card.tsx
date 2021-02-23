@@ -42,10 +42,9 @@ display:inline-block;
 `
 
 const Card: React.FC<Props> = ({ description }) => {
-  console.log('Cardの42行目のdescriptionは' + JSON.stringify(description.eyecatching))
   return (
     <Link href="/blogs/[id]" as={`blogs/${description.id}`}>
-      <Article>
+      <Article className="pointer">
         {
           description.eyecatching ?
             <Image width="auto" height="200px" src={description.eyecatching.url} />
