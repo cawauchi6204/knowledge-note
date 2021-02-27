@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useContext } from "react"
+import CommonReducerContext from '../common/CommonContext'
 import styled from 'styled-components'
 
 import Head from './Head'
@@ -7,11 +8,14 @@ import Footer from "./Footer"
 
 type Props = {}
 
-const Section = styled.section`
-  margin:0 5rem;
+const Section: any = styled.section.attrs((props: any) => ({
+  margin: props.states.isSmartPhone | props.states.isTablet ? '0 1rem' : '0 5rem',
+}))`
+  margin:${props => props.margin};
 `
 
 const Layout: React.FC<Props> = ({ children }) => {
+  const states: any = useContext(CommonReducerContext)
   return (
     <>
       <Head
@@ -25,7 +29,7 @@ const Layout: React.FC<Props> = ({ children }) => {
       />
       <body>
         <Header />
-        <Section>
+        <Section states={states}>
           {children}
         </Section>
         <Footer />
