@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
+import CommonProvider from '../common/CommonProvider'
+import CommonReducerContext from '../common/CommonContext'
 import Layout from '../components/Layout'
 import CardList from '../components/CardList'
 import Quotes from '../components/Quotes'
-import JointDevelopment from '../components/JointDevelopment'
+import CoDevelopment from '../components/CoDevelopment'
 
 type Props = {
   blogs: [
@@ -35,13 +37,15 @@ type Tag = {
 }
 
 const Home: React.FC<Props> = ({ blogs }) => {
+  const { state, dispatch }: any = useContext(CommonReducerContext)
   return (
-    <Layout>
-      <Quotes />
-      <h2>最新の記事</h2>
-      <CardList blogs={blogs} />
-      <JointDevelopment />
-    </Layout>
+    <CommonProvider>
+      <Layout>
+        <Quotes />
+        <CardList blogs={blogs} />
+        <CoDevelopment />
+      </Layout>
+    </CommonProvider>
   )
 }
 

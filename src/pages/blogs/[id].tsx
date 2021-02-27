@@ -32,7 +32,7 @@ type Tag = {
 const BlogId: React.FC<Props> = ({ blog, highlightedBody }) => {
   const $ = cheerio.load(highlightedBody)
   const headings = $('h1, h2, h3').toArray()
-  const toc = headings.map((data: any) => ({
+  const tocArray:any = headings.map((data: any) => ({
     text: data.children[0].data,
     id: data.attribs.id,
     name: data.name
@@ -47,11 +47,7 @@ const BlogId: React.FC<Props> = ({ blog, highlightedBody }) => {
           </React.Fragment>
         ))}
       </div>
-      <ul>
-        {toc.map(item => (
-          <Toc item={item} />
-        ))}
-      </ul>
+      <Toc tocArray={tocArray} />
       <div dangerouslySetInnerHTML={{ __html: highlightedBody }}></div>
     </Layout>
   )
