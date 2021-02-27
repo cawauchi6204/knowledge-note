@@ -1,26 +1,41 @@
-import React from 'react'
-import { Link } from 'react-scroll';
+import React from "react"
+import styled from 'styled-components'
+
+import CommonToc from '../common/CommonToc'
 
 type Props = {
-  item: {
-    name: string
-    id: string
-    text: string
-  }
+  tocArray: [
+    {
+      name: string
+      id: string
+      text: string
+    }
+  ]
 }
 
-const Toc: React.FC<Props> = ({ item }) => {
+const TocContainer = styled.div`
+  margin: 0 auto;
+  border: solid 6px #008F8F;
+  max-width: 450px;
+  border-radius: 15px;
+`
+
+const TocTitle = styled.p`
+  background-color: #008F8F;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  padding: 1em 0;
+  font-size: 1.1em;
+  margin: 0;
+`
+
+const Toc: React.FC<Props> = ({ tocArray }) => {
   return (
-    <li key={item.id}>
-      <Link
-        activeClass="active"
-        to={item.id}
-        spy={true}
-        smooth={true}
-        offset={-30}
-        duration={0}
-      >{item.text}</Link>
-    </li>
+    <TocContainer>
+      <TocTitle>目次</TocTitle>
+      <CommonToc tocArray={tocArray} />
+    </TocContainer>
   )
 }
 
