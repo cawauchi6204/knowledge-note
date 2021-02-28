@@ -47,7 +47,9 @@ const BlogId: React.FC<Props> = ({ blog, highlightedBody }) => {
           </React.Fragment>
         ))}
       </div>
-      <Toc tocArray={tocArray} />
+      {
+        tocArray.length > 0 && <Toc tocArray={tocArray} />
+      }
       <div dangerouslySetInnerHTML={{ __html: highlightedBody }}></div>
     </Layout>
   )

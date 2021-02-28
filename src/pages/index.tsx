@@ -4,7 +4,6 @@ import CommonProvider from '../common/CommonProvider'
 import CommonReducerContext from '../common/CommonContext'
 import Layout from '../components/Layout'
 import CardList from '../components/CardList'
-import Quotes from '../components/Quotes'
 import CoDevelopment from '../components/CoDevelopment'
 
 type Props = {
@@ -41,7 +40,6 @@ const Home: React.FC<Props> = ({ blogs }) => {
   return (
     <CommonProvider>
       <Layout>
-        <Quotes />
         <CardList blogs={blogs} />
         <CoDevelopment />
       </Layout>

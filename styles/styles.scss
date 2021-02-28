@@ -4,7 +4,7 @@ body {
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
 		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-	line-height: 1.6;
+	line-height: 1;
 	font-size: 18px;
 }
 
@@ -88,4 +88,28 @@ img {
 
 .tc-black {
   color:black;
+}
+
+.tc-white {
+  color:white;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.tc-violet {
+  color:#2B2970;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.lh-16 {
+  line-height: 1.6;
 }

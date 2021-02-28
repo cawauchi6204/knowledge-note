@@ -15,7 +15,7 @@ color:white;
 const Footer: React.FC<Props> = ({ }) => {
   return (
     <LayoutFooter>
-      <Cp>©︎おさないさん</Cp>
+      <Cp>©︎プログラミングアカデミー</Cp>
     </LayoutFooter>
   )
 }
