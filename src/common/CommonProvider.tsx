@@ -1,13 +1,13 @@
 import { useReducer } from 'react'
 import CommonReducerContext from './CommonContext'
-import commonReducer, { commoninitialState } from './CommonReducer'
+import commonReducer, { commonInitialState } from './CommonReducer'
 import { useMediaQuery } from 'react-responsive'
 
 type Props = {
 }
 
 const CommonProvider: React.FC<Props> = ({ children }) => {
-  const [state, dispatch]: any = useReducer(commonReducer, commoninitialState)
+  const [state, dispatch]: any = useReducer(commonReducer, commonInitialState)
   const isSmartPhone = useMediaQuery({ maxWidth: 539 })
   const isTablet = useMediaQuery({
     minWidth: 540,

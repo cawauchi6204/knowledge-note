@@ -9,10 +9,10 @@ const MediaQueryContext = React.createContext({
 })
 
 export const CommonMediaQueryProvider: React.FC = ({ children }) => {
-  const isSmartPhone = useMediaQuery({ maxWidth: 559 })
+  const isSmartPhone = useMediaQuery({ maxWidth: 539 })
   const isTablet = useMediaQuery({
-    minWidth: 560,
-    maxWidth: 959
+    minWidth: 540,
+    maxWidth: 1039
   })
   const isMobile = isSmartPhone || isTablet
   const isPc = !isMobile
