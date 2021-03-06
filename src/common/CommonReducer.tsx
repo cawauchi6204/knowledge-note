@@ -1,4 +1,4 @@
-export const commoninitialState = {
+export const commonInitialState = {
   // data: {},
   // cash: {},
   // indicator: false,
