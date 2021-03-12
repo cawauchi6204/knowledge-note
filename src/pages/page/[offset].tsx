@@ -1,7 +1,8 @@
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import React, { useCallback } from 'react'
 import { useRouter } from 'next/router'
 import { Pagination } from '@material-ui/lab'
+import { Grid } from '@material-ui/core'
 import CommonProvider from '../../common/CommonProvider'
 
 import Layout from '../../components/Layout'
@@ -46,6 +47,7 @@ const DynamicPage: React.FC<Props> = ({ blogs, totalCount, limit }) => {
     <CommonProvider>
       <Layout>
         <CardList blogs={blogs} />
+        <Grid container justify="center">
         <Pagination
           count={Math.ceil(totalCount / limit)}
           variant="outlined"
@@ -54,6 +56,7 @@ const DynamicPage: React.FC<Props> = ({ blogs, totalCount, limit }) => {
           page={offset}
           onChange={handleChangePage}
         />
+        </Grid>
       </Layout>
     </CommonProvider>
   )

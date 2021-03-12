@@ -30,8 +30,6 @@ type Props = {
   limit: number,
 }
 
-
-
 const Home: React.FC<Props> = ({ blogs, totalCount, limit }) => {
   // const { state, dispatch }: any = useContext(CommonReducerContext)
   const router = useRouter()
