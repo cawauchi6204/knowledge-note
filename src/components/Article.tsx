@@ -34,6 +34,7 @@ type Tag = {
 
 const TagExtended = styled(Tag)`
 margin-right:10px;
+margin-bottom:10px;
 `
 
 const LeftColumn: any = styled.section.attrs((props: any) => ({
