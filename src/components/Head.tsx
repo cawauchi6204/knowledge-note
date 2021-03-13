@@ -44,6 +44,7 @@ export default ({
           'https://cdn.qiita.com/assets/favicons/public/apple-touch-icon-f9a6afad761ec2306e10db2736187c8b.png'
         }
       />
+      <link href="https://fonts.googleapis.com/css2?family=Stick&display=swap" rel="stylesheet" />
     </Head>
   );
 };
