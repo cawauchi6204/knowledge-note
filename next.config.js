@@ -8,4 +8,7 @@ module.exports = {
       'images.unsplash.com'
     ],
   },
+  experimental: {
+    optimizeFonts: true,
+  },
 }
