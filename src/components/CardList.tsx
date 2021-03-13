@@ -74,7 +74,7 @@ const CardList: React.FC<Props> = ({ blogs }) => {
     isTablet,
     isPc
   } = states
-  // const {state, dispatch, isSmartPhone, isTablet, isPc} = states
+
   return (
     <CardListSection states={states}>
       {isSmartPhone && (

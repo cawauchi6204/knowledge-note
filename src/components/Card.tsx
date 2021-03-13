@@ -1,8 +1,8 @@
-import React, { useContext } from "react"
+import React, { useContext, useCallback } from "react"
 import styled from 'styled-components'
 import CommonReducerContext from '../common/CommonContext'
 import Image from 'next/image'
-import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import {
   CommonFlexRow,
@@ -134,52 +134,60 @@ const CopyrightSection = styled.section`
 
 const Card: React.FC<Props> = ({ description }) => {
   const states: any = useContext(CommonReducerContext)
+  const router = useRouter()
+  const { id } = description
+
+  const handleChangePage = useCallback(
+    () => {
+      router.push(`/blogs/${id}`)
+    },
+    [router],
+  )
+
   return (
-    <Link href="/blogs/[id]" as={`blogs/${description.id}`}>
-      <CardWrapper className="pointer" states={states}>
-        <CommonFlexColumn>
-          <UpdatedSection>
-            <span className="tc-violet bold">
-              投稿日:{commonSliceFirst10Date(description.updatedAt)}</span>
-          </UpdatedSection>
-          <CommonFlexRow>
-            <UpperCardSection>
-              <span className="tc-white bold">プロアカ学習帳</span>
-            </UpperCardSection>
-          </CommonFlexRow>
-        </CommonFlexColumn>
-        <ImageAndTitleSection>
-          <CardImageFrame>
-            {
-              description.eyecatching ?
-                <Image width="auto" height="200px" src={description.eyecatching.url} />
-                :
-                <Image width="auto" height="200px" src="https://placehold.jp/300x200.png" />
-            }
-          </CardImageFrame>
-          <CardTitleArea>
-            <CommonFlexRow className="justify-between">
-              <CommonFlexRow>
-                {
-                  description.tags.map((tag: Tag) => (
-                    <React.Fragment key={tag.id}>
-                      <CardTagTitle>{tag.name}</CardTagTitle>
-                    </React.Fragment>
-                  ))
-                }
-              </CommonFlexRow>
-              <CardTitle>{description.title}</CardTitle>
+    <CardWrapper className="pointer" states={states} onClick={handleChangePage}>
+      <CommonFlexColumn>
+        <UpdatedSection>
+          <span className="tc-violet bold">
+            投稿日:{commonSliceFirst10Date(description.updatedAt)}</span>
+        </UpdatedSection>
+        <CommonFlexRow>
+          <UpperCardSection>
+            <span className="tc-white bold">プロアカ学習帳</span>
+          </UpperCardSection>
+        </CommonFlexRow>
+      </CommonFlexColumn>
+      <ImageAndTitleSection>
+        <CardImageFrame>
+          {
+            description.eyecatching ?
+              <Image width="auto" height="200px" src={description.eyecatching.url} />
+              :
+              <Image width="auto" height="200px" src="https://placehold.jp/300x200.png" />
+          }
+        </CardImageFrame>
+        <CardTitleArea>
+          <CommonFlexRow className="justify-between">
+            <CommonFlexRow>
+              {
+                description.tags.map((tag: Tag) => (
+                  <React.Fragment key={tag.id}>
+                    <CardTagTitle>{tag.name}</CardTagTitle>
+                  </React.Fragment>
+                ))
+              }
             </CommonFlexRow>
-          </CardTitleArea>
-          <GradeSection>
-            <span className="lh-16">投稿者:hogeehoge</span>
-          </GradeSection>
-          <CopyrightSection>
-            <span>©︎プログラミングアカデミー</span>
-          </CopyrightSection>
-        </ImageAndTitleSection>
-      </CardWrapper>
-    </Link>
+            <CardTitle>{description.title}</CardTitle>
+          </CommonFlexRow>
+        </CardTitleArea>
+        <GradeSection>
+          <span className="lh-16">投稿者:hogeehoge</span>
+        </GradeSection>
+        <CopyrightSection>
+          <span>©︎プログラミングアカデミー</span>
+        </CopyrightSection>
+      </ImageAndTitleSection>
+    </CardWrapper >
   )
 }
 

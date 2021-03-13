@@ -31,7 +31,8 @@ type Props = {
 }
 
 const DynamicPage: React.FC<Props> = ({ blogs, totalCount, limit }) => {
-  const router = useRouter();
+  const router = useRouter()
+  console.log('[offset]の35行目のrouterは' + JSON.stringify(router))
   const offset = router.query.offset
     ? Number.parseInt(String(router.query.offset), 10)
     : 1
