@@ -45,6 +45,7 @@ const RightColumn = styled.section`
 
 const Article: React.FC<Props> = ({ blog, highlightedBody }) => {
   const states: any = useContext(CommonReducerContext)
+  console.log('test')
 
   const {
     isSmartPhone,
