@@ -10,7 +10,8 @@ type Props = {
       id: string
       text: string
     }
-  ]
+  ],
+  className?:any
 }
 
 const TocContainer = styled.div`
@@ -30,9 +31,9 @@ const TocTitle = styled.p`
   margin: 0;
 `
 
-const Toc: React.FC<Props> = ({ tocArray }) => {
+const Toc: React.FC<Props> = ({ tocArray,className }) => {
   return (
-    <TocContainer>
+    <TocContainer className={className}>
       <TocTitle>目次</TocTitle>
       <CommonToc tocArray={tocArray} />
     </TocContainer>

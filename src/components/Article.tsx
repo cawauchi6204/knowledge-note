@@ -40,7 +40,10 @@ const LeftColumn: any = styled.section.attrs((props: any) => ({
 
 const RightColumn = styled.section`
   width:30%;
-  height:100%;
+  height:auto;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
 `
 
 const Article: React.FC<Props> = ({ blog, highlightedBody }) => {
