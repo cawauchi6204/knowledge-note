@@ -51,8 +51,6 @@ const Article: React.FC<Props> = ({ blog, highlightedBody }) => {
     isTablet,
     isPc
   } = states
-  console.log('Articleの55行目のstatesは' + JSON.stringify(states))
-  console.log('hogoehoge')
   const $ = cheerio.load(highlightedBody)
   const headings = $('h1, h2, h3').toArray()
   const tocArray: any = headings.map((data: any) => ({
@@ -73,7 +71,7 @@ const Article: React.FC<Props> = ({ blog, highlightedBody }) => {
           ))}
         </div>
         {
-          tocArray.length > 0 && <Toc tocArray={tocArray} />
+          !isPc && tocArray.length > 0 && <Toc tocArray={tocArray} />
         }
         <div dangerouslySetInnerHTML={{ __html: highlightedBody }}></div>
       </LeftColumn>
