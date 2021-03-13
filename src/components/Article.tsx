@@ -6,6 +6,7 @@ import 'highlight.js/styles/night-owl.css'
 
 import Toc from '../components/Toc'
 import Sidebar from '../components/Sidebar'
+import Tag from '../components/Tag'
 import { CommonFlexRow } from '../common/CommonHtmlStyledTag'
 
 type Props = {
@@ -30,6 +31,10 @@ type Tag = {
   revisedAt: string,
   name: string
 }
+
+const TagExtended = styled(Tag)`
+margin-right:10px;
+`
 
 const LeftColumn: any = styled.section.attrs((props: any) => ({
   width: props.states.isSmartPhone || props.states.isTablet ? '100%' : '70%',
@@ -64,13 +69,11 @@ const Article: React.FC<Props> = ({ blog, highlightedBody }) => {
     <CommonFlexRow>
       <LeftColumn states={states}>
         <h1>{blog.title}</h1>
-        <div>
+        <section>
           {blog.tags.map((tag: Tag) => (
-            <React.Fragment key={tag.id}>
-              <span>{tag.name}</span>
-            </React.Fragment>
+            <TagExtended key={tag.id} style={{ marginRight: '5px' }}>{tag.name}</TagExtended>
           ))}
-        </div>
+        </section>
         {
           !isPc && tocArray.length > 0 && <Toc tocArray={tocArray} />
         }
